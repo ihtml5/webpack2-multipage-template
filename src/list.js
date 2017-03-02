@@ -15,19 +15,11 @@ const data = {
 };
 
 let app = new TObserver(data);
+console.log('app',app);
+app.$watch('user',function(user) {
+    console.log('改变',user);
+});
+app.set('user','chenyf');
 
-console.log(app.data);
 
-// data = Object.assign({},data,{hobby:'love javascript'});
-app.set('skill',['es6','node','react','vue'],false);
-// app.set(data);
-console.clear();
-app.data['skill'] = ['cuc','node'];
-root.innerHTML = app.data['user']['name'];
-app.set('user',{name:'react'},true);
-root.innerHTML = app.data['user']['name'];
-
-let list = ['a','b'];
-let fakeList = new DynamicArray(list);
-fakeList.push('cc');
 

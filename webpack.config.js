@@ -14,7 +14,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname,'dist/assets/js/'),
-        filename: '[name].[chunkhash].js'
+        filename: '[name].js'
     },
     watch: true,
     module: {

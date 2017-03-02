@@ -1,7 +1,9 @@
+import EventProxy from './eventProxy';
 class TObserver {
     constructor(data) {
         this.data = data;
         this.walk(data);
+        this.eventsBus = new EventProxy();
     }
     walk(obj) {
         let val = null;
@@ -10,8 +12,9 @@ class TObserver {
                 val = obj[key];
                 if (typeof val === 'object') {
                     new TObserver(val);
+                } else {
+                    this.convert(key,val);
                 }
-                this.convert(key,val);
             }
         }
     }
@@ -42,10 +45,12 @@ class TObserver {
         if (key && typeof key === 'object') {
             this.data = key;
             this.walk(this.data);
+            this.eventsBus.emit(key);
         } else if (key && typeof key === 'string' && value && !combination ) {
             newData[key] = value;
             this.data = newData;
             this.walk(this.data);
+            this.eventsBus.emit(key);
         } else if (key && typeof key === 'string' && value && combination) {
             if (typeof newData[key] === 'object' && newData[key]) {
                 if (Object.prototype.toString.call(newData[key]) === '[object Object]') {
@@ -55,8 +60,12 @@ class TObserver {
                 }
             }
             this.data=newData;
+            this.eventsBus.emit(key);
             this.walk(this.data);
         }
+    }
+    $watch(attr,callback) {
+        this.eventsBus.on(attr,callback);
     }
 }
 
