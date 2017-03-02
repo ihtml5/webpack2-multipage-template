@@ -1,0 +1,175 @@
+*,
+*:before,
+*:after {
+    font-family: '微软雅黑';
+    box-sizing: border-box;
+}
+thead th {
+    background-color: #ccc;
+}
+table.table-sticky {
+    width: -webkit-calc(100%-20px);
+}
+.tu-table-toolbar {
+    position: relative;
+    margin: 10px 0;
+    min-height: 30px;
+    /*overflow: hidden;*/
+}
+.tu-table-search {
+    width: 300px;
+}
+.tu-table-export {
+    float: left;
+}
+.tu-table-toolbar-left {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: auto;
+}
+.tu-table-toolbar-right {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: auto;
+}
+/*.tu-table-toolbar::after {
+    content: '';
+    display: table;
+    clear: both;
+}*/
+.tu-table-filter {
+    position: absolute;
+    top:0;
+    right: 0;
+    z-index: 3000;
+}
+.tu-table-filter ul {
+    /*position: absolute;
+    top: 16px;
+    right: 8px;*/
+    position: relative;
+    left: -5px;
+    top: 1px;
+    min-width: 81px;
+    padding: 5px 10px;
+    list-style-type: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-top: 2px solid #eee;
+    z-index: 3000;
+}
+.tu-table-filter ul li {
+    margin-bottom: 3px;
+}
+.tu-table-toolbar button {
+    margin-right: 10px;
+}
+.tu-table-sortArea {
+    float:right;
+}
+.tu-table-sort {
+    width:0;
+    height:0; 
+    border-width:6px; 
+    border-style:solid;
+    cursor: pointer;
+    margin: 0 10px;
+}
+.tu-table-asc {
+    border-color:transparent transparent #999 transparent;
+}
+.tu-table-asc-hightLight {
+    border-color:transparent transparent #333 transparent;
+}
+.tu-table-desc {
+    margin-top: 3px;
+    border-color:#999 transparent transparent transparent;
+}
+.tu-table-desc-hightLight {
+    margin-top: 3px;
+    border-color:#333 transparent transparent transparent;
+}
+.tu-pagination {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.tu-pagination li {
+    float: left;
+    margin-right: 5px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px;
+    cursor: pointer;
+}
+.tu-table-columnTitle {
+    margin-left: 5px;
+}
+.tu-table-columnTitle {
+    position: relative;
+    top: -1px;
+    font-size: 13px;
+}
+.tu-table-filterContainer {
+    max-height: 200px;
+    overflow-y: auto;
+}
+/*
+ loading css
+*/
+.tu-loading {
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 100px;
+    font-size: 20px;
+    font-weight: 600;
+}
+.tu-table-triggerFilter {
+    display: block;
+}
+/*
+  pagination css
+*/
+.tu-pagination-prev {
+    font-weight: 600;
+}
+.tu-pagination-next {
+    font-weight: 600;
+}
+.tu-table-container {
+    position: relative;
+    top: -22px;
+    left: 0;
+    /*max-height: 100px;*/
+    overflow-y: auto;
+    border-bottom: 1px solid #ddd;
+}
+.tu-table-sticky {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.tu-table {
+    position: relative;
+}
+.tu-table-container  table {
+    position: absolute;
+    left: 0;
+    top: -44px;
+}
+.tu-table-stickyContainer {
+    position: relative;
+}
+.tu-table-searchInput {
+    display: inline-block;
+    width: auto;
+}

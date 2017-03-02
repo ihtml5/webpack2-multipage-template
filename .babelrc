@@ -1,0 +1,18 @@
+{
+    "presets": [
+        ["es2015",{"modules": false}],
+        [ "env", {
+          "targets": {
+             "browsers": ["last 2 versions", "ie >= 7"]
+          },
+          "modules": false,
+          "useBuiltIns": true,
+          "debug": true
+        }],
+        "react",
+        "stage-2"
+    ],
+    "plugins": [
+        ["import",{ "libraryName": "antd","style":"css"}]
+    ]
+}
