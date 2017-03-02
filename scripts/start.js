@@ -1,15 +1,26 @@
-var express = require("express");
-var webpackDevMiddleware = require("webpack-dev-middleware");
+var path = require("path");
 var webpack = require("webpack");
-var webpackConfig = require("../config/webpack.config.dev");
+var webpackDevServer = require("webpack-dev-server");
+var webpackCfg = require("../config/webpack.config.dev.js");
 
-var app = express();
-var compiler = webpack(webpackConfig);
+var compiler = webpack(webpackCfg);
 
-app.use(webpackDevMiddleware(compiler, {
-  publicPath: webpackConfig.output.filename
+//init server
+var app = new webpackDevServer(compiler, {
+    //注意此处publicPath必填
+    publicPath: webpackCfg.output.path,
+    stats: {
+      colors: true
+    },
+});
+app.use(require("webpack-dev-middleware")(compiler, {
+    noInfo: true, publicPath: webpackCfg.output.path
 }));
 
-app.listen(3000, function () {
-  console.log("Listening on port 3000!");
+app.listen(8080, "localhost", function (err) {
+    if (err) {
+        console.log(err);
+    }
 });
+
+console.log("listen at http://localhost:8080");

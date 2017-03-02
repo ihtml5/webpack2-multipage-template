@@ -1,16 +1,16 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var importAssetsPlugin = require('../src/plugins/html-webpack-import-assets.js');
+var importAssetsPlugin = require('./plugins/html-webpack-import-assets.js');
 var HappyPack = require('happypack');
 var happyThreadPool = HappyPack.ThreadPool({ size: 5 });
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
+var InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin');
 module.exports = {
     entry: {
         'vendors': ['react'],
-        'index': ['./src/index.js',hotMiddlewareScript],
-        'list': ['./src/list.js',hotMiddlewareScript]
+        'index': './src/index.js',
+        'list': './src/list.js'
     },
     output: {
         path: path.resolve(__dirname,'dist/assets/js/'),
@@ -57,28 +57,32 @@ module.exports = {
             filename: path.join(__dirname,'dist/index.html'),
             template: './src/template/index.ejs',
             title: 'tup antd react',
-            chunks: ['vendors','common','index']
+            chunks: ['mainifest','vendors','common','index']
         }),
         new HtmlWebpackPlugin({
             filename: path.join(__dirname,'dist/views/list.html'),
             template: './src/template/list.ejs',
             title: 'es5 mode',
             inject: 'body',
-            chunks: ['common','list']
+            chunks: ['mainifest','common','list']
         }),
         new HappyPack({
             loaders: [ 'babel-loader?presets[]=es2015'],
             threads: 4
         }),
         new webpack.optimize.CommonsChunkPlugin({
-            name: "common",
-            filename: 'common.js',
+            names: ["common",'mainifest'],
+            filename: '[name].js',
             minChunks: 2,
         }),
+        new InlineManifestWebpackPlugin(),
         new ExtractTextPlugin("../../css/styles.css"),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin(),
+        // enable HMR globally
+        new webpack.NamedModulesPlugin(),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: process.env.NODE_ENV === 'production'
+        })
     ],
-    devtool: '#source-map'
-    
+    devtool: 'cheap-module-source-map'
 }

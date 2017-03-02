@@ -10,7 +10,7 @@ const data = {
         age: 24
     },
     address: {
-        city: 'beijing'
+        city: 'luoyang'
     }
 };
 

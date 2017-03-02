@@ -50,14 +50,12 @@
     "webpack-hot-server-middleware": "^0.0.4",
     "ztree": "^3.5.24"
   },
-  "fscripts": {
-    "start": "nodemon scripts/start.js",
-    "test": "nodemon scripts/test.js",
-    "build": "nodemon scripts/build.js"
-  },
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "node scripts/start.js",
+    "test": "node scripts/test.js",
+    "build": "node scripts/build.js",
     "dev": "webpack -d",
-    "build": "webpack -p"
+    "istart": "webpack-dev-server",
+    "ibuild": "webpack -p"
   }
 }

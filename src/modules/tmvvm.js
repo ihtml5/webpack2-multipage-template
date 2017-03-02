@@ -39,14 +39,7 @@ class TObserver {
         const key = rest[0];
         const value = rest[1];
         const combination = rest[2];
-        console.clear();
-        console.group();
-        console.log(key);
-        console.log(value);
-        console.log(combination);
-        console.groupEnd();
         if (key && typeof key === 'object') {
-            alert('aaa');
             this.data = key;
             this.walk(this.data);
         } else if (key && typeof key === 'string' && value && !combination ) {
@@ -54,7 +47,6 @@ class TObserver {
             this.data = newData;
             this.walk(this.data);
         } else if (key && typeof key === 'string' && value && combination) {
-            alert('ddd');
             if (typeof newData[key] === 'object' && newData[key]) {
                 if (Object.prototype.toString.call(newData[key]) === '[object Object]') {
                     newData[key] = Object.assign({},this.data[key],value);
@@ -73,7 +65,8 @@ class DynamicArray {
         Array.call(this,arguments);
     }
     push() {
-        console.log('我被改变了');
+        console.clear();
+        console.log('push,我被改变了');
         return Array.prototype.push(this,arguments);
     }
 }

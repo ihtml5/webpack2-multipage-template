@@ -1,7 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var importAssetsPlugin = require('./src/plugins/html-webpack-import-assets.js');
+var importAssetsPlugin = require('./config/plugins/html-webpack-import-assets.js');
 var HappyPack = require('happypack');
 var happyThreadPool = HappyPack.ThreadPool({ size: 5 });
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
