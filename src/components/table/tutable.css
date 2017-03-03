@@ -70,6 +70,8 @@ table.table-sticky {
 }
 .tu-table-sortArea {
     float:right;
+    position: relative;
+    top: 2px;
 }
 .tu-table-sort {
     width:0;
@@ -173,4 +175,14 @@ table.table-sticky {
     display: inline-block;
     width: auto;
 }
-
+.tu-table th {
+    position: relative;
+    text-align: center;
+}
+.tu-table-headerTitle {
+    position: relative;
+    top: 7px;
+}
+.tu-table-headerNumber {
+    top: -2px;
+}

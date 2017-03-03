@@ -76,12 +76,11 @@ class Tutable extends Component {
         console.log('filterColumnsShow',e,index);
     }
     componentDidMount() {
-        const { url,apiService } = this.props;
-        this._stickyHeader.style.width = (this._domTable.clientWidth - 17) + 'px';
-        window.onresize = () => {
+        const { url,apiService,sticky } = this.props;
+        sticky && (this._stickyHeader.style.width = (this._domTable.clientWidth - 17) + 'px');
+        sticky && (window.onresize = () => {
             this._stickyHeader.style.width = (this._domTable.clientWidth - 17) + 'px';
-        }
-        console.clear();
+        });
         apiService.get({url},this.successCallback,this.errorCallback);
         // fetch(url).then(res => res.json()).then(result => {
 
@@ -156,7 +155,7 @@ class Tutable extends Component {
                  <div className="tu-table-stickyHeader" ref={(node) => {this._stickyHeader = node;}}>
                     <table className="table table-bordered table-sticky">
                         <colgroup>
-                            <col style={{width:80}}/>
+                            <col style={{minWidth:80}}/>
                             <col />
                         </colgroup>
                         { cloneElement(child,Object.assign({},child.props,{selectMode,sortBy:this.sortBy},extraAttrs),child.props.children) }
@@ -217,11 +216,11 @@ class Tutable extends Component {
                     </div>
                 </div>
                 <div className="tu-table-stickyContainer">
-                    {this.genStickyHeader()}
-                    <div className="tu-table-container" style={{height:height}}>
-                        <table className="table table-bordered table-responsive" style={sticky ? {position:'relative'} : {position: 'inherit'}}>
+                    {sticky ? this.genStickyHeader(): undefined}
+                    <div className="tu-table-container" style={{height:height,top: (sticky? '-22px':'0px')}}>
+                        <table className="table table-bordered table-responsive" style={sticky ? {position:'relative'} : {position: 'inherit',top:sticky? '-44px':'0px'}}>
                             <colgroup>
-                                <col style={{width:80}}/>
+                                <col style={{minWidth:80}}/>
                                 <col />
                             </colgroup>
                             {this.traverseChildrens()}

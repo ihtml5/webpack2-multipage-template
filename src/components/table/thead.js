@@ -23,7 +23,7 @@ class Tuthead extends Component {
                 }
             });
             showNo && headerThs.unshift(<th key='thnumberaskey'>
-                <span className="tu-table-headerTitle">序号</span>
+                <span className="tu-table-headerTitle tu-table-headerNumber">序号</span>
                 <div className="tu-table-sortArea">
                 </div>
             </th>);
