@@ -25,7 +25,7 @@ module.exports = {
                 use: 'babel-loader'
             },
             {
-                test: /\.(png|jpg)$/,
+                test: /\.(png|jpg|svg)$/,
                 use: [{
                     loader: 'url-loader',
                     options: {
@@ -56,7 +56,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: path.join(__dirname,'dist/index.html'),
             template: './src/template/index.ejs',
-            title: 'tup antd react',
+            title: 'tupack',
             chunks: ['mainifest','vendors','common','index']
         }),
         new HtmlWebpackPlugin({

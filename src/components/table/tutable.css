@@ -1,7 +1,7 @@
 *,
 *:before,
 *:after {
-    font-family: '微软雅黑';
+    /*font-family: '微软雅黑';*/
     box-sizing: border-box;
 }
 thead th {
@@ -173,3 +173,4 @@ table.table-sticky {
     display: inline-block;
     width: auto;
 }
+

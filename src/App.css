@@ -8,8 +8,8 @@
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
+  background-color: #108ee9;
+  height: 180px;
   padding: 20px;
   color: white;
 }
@@ -21,4 +21,30 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+.App-main {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+.App-sidebar {
+  float:left;
+  width: 200px;
+}
+.App-content {
+  margin-left: 210px;
+  width: auto;
+}
+.ant-menu-item, .ant-menu-submenu-title {
+  padding: 0 5px;
+}
+.tupack-des {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #eee;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.tupack-des a {
+  color: #fff;
 }

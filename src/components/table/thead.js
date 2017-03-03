@@ -11,7 +11,7 @@ class Tuthead extends Component {
                 if (col['visible']) {
                     return (
                         <th key={col['key'] || index}>
-                            {col['title']}
+                            <span className="tu-table-headerTitle">{col['title']}</span>
                             <div className="tu-table-sortArea">
                                 <div className={ascCls} onClick={() => {sortBy('asc',col['key'])}}></div>
                                 <div className={descCls} onClick={() => {sortBy('desc',col['key'])}}></div>
@@ -22,7 +22,11 @@ class Tuthead extends Component {
                     return undefined;
                 }
             });
-            showNo && headerThs.unshift(<th key='thnumberaskey'>序号</th>);
+            showNo && headerThs.unshift(<th key='thnumberaskey'>
+                <span className="tu-table-headerTitle">序号</span>
+                <div className="tu-table-sortArea">
+                </div>
+            </th>);
             selectMode === 'multi' && headerThs.unshift(<th key="checkboxaskey"><input type="checkbox" onChange={(e) => {selectAll(e)}}/></th>)
             selectMode === 'single' && headerThs.unshift(<th key="checkboxaskey"></th>)
             return (

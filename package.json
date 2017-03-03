@@ -27,7 +27,7 @@
     "exports-loader": "^0.6.3",
     "express": "^4.14.1",
     "extract-text-webpack-plugin": "beta",
-    "file-loader": "^0.10.0",
+    "file-loader": "^0.10.1",
     "happypack": "^3.0.3",
     "html-loader": "^0.4.4",
     "html-webpack-plugin": "^2.28.0",

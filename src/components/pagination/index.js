@@ -21,7 +21,7 @@ class Tupagination extends Component {
             paginationLis.unshift(<li key='paginationprevaskey' className="tu-pagination-prev" style={this.hightSelect(offset)}>{`<<`}</li>);
             paginationLis.push(<li key='paginationnextaskey' className="tu-pagination-next" style={this.hightSelect(offset)}>{`>>`}</li>);
         }
-        console.info(paginationLis,pageLen);
+        // console.info(paginationLis,pageLen);
         return paginationLis;
     }
     render() {

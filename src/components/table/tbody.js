@@ -5,8 +5,8 @@ import Tuloading from '../loading';
 class Tutbody extends Component {
     isNoEditor(idx,index,cnt) {
         const { editor: {col,row} } = this.props;
-        console.log(idx,index,typeof idx,typeof index);
-        console.log(col,row);
+        // console.log(idx,index,typeof idx,typeof index);
+        // console.log(col,row);
         if (col === idx && row === index) {
             return <input type='text' placeholder='请输入' className="form-control" defaultValue={cnt}/>;
         }
