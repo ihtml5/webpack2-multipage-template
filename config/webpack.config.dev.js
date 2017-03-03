@@ -8,7 +8,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin');
 module.exports = {
     entry: {
-        'vendors': ['react'],
+        'vendors': ['react','axios'],
         'index': './src/index.js',
         'list': './src/list.js'
     },

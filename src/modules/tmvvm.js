@@ -45,12 +45,12 @@ class TObserver {
         if (key && typeof key === 'object') {
             this.data = key;
             this.walk(this.data);
-            this.eventsBus.emit(key);
+            this.eventsBus.emit(key,newData);
         } else if (key && typeof key === 'string' && value && !combination ) {
             newData[key] = value;
             this.data = newData;
             this.walk(this.data);
-            this.eventsBus.emit(key);
+            this.eventsBus.emit(key,newData);
         } else if (key && typeof key === 'string' && value && combination) {
             if (typeof newData[key] === 'object' && newData[key]) {
                 if (Object.prototype.toString.call(newData[key]) === '[object Object]') {
@@ -60,7 +60,7 @@ class TObserver {
                 }
             }
             this.data=newData;
-            this.eventsBus.emit(key);
+            this.eventsBus.emit(key,newData);
             this.walk(this.data);
         }
     }

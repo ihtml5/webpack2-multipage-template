@@ -9,6 +9,7 @@
   "dependencies": {
     "antd": "^2.7.3",
     "arrify": "^1.0.1",
+    "axios": "^0.15.3",
     "babel-core": "^6.23.1",
     "babel-loader": "^6.3.2",
     "babel-plugin-import": "^1.1.1",

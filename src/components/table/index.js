@@ -1,6 +1,8 @@
 import React, { Component,Children,cloneElement } from 'react';
 import Tupagination from '../pagination';
 import TutablePluginFilter from './plugins/PluginFilter';
+
+
 class Tutable extends Component {
     constructor(props) {
         super(props);
@@ -23,6 +25,8 @@ class Tutable extends Component {
         this.selectRows = this.selectRows.bind(this);
         this.selectAll = this.selectAll.bind(this);
         this.showEditor = this.showEditor.bind(this);
+        this.successCallback = this.successCallback.bind(this);
+        this.errorCallback = this.errorCallback.bind(this);
     }
     autoRecord(dataSource) {
         let records = [];
@@ -72,15 +76,16 @@ class Tutable extends Component {
         console.log('filterColumnsShow',e,index);
     }
     componentDidMount() {
-        const { url } = this.props;
+        const { url,apiService } = this.props;
         this._stickyHeader.style.width = (this._domTable.clientWidth - 17) + 'px';
         window.onresize = () => {
             this._stickyHeader.style.width = (this._domTable.clientWidth - 17) + 'px';
         }
-        fetch(url).then(res => res.json()).then(result => {
-            let records = this.autoRecord(result['dataSource']);
-            this.setState(Object.assign({},this.state,result,{loading:false,records}));
-        }).catch(err => console.error(err));
+        console.clear();
+        apiService.get({url},this.successCallback,this.errorCallback);
+        // fetch(url).then(res => res.json()).then(result => {
+
+        // }).catch(err => console.error(err));
     }
     componentWillUnMount() {
         window.onresize = null;
@@ -177,8 +182,18 @@ class Tutable extends Component {
             return cloneElement(child,Object.assign({},child.props,{selectMode},extraAttrs,{showEditor:this.showEditor,editor}),child.props.children);
         });
     }
+    successCallback (result) {
+        let records = this.autoRecord(result['dataSource']);
+        this.setState(Object.assign({},this.state,result,{loading:false,records}))
+    }
+    errorCallback(error) {
+        this.setState({
+            loading: false,
+            error
+        });
+    }
     render() {
-        const { sticky,exportTypes,onExport,onSearch,url,limit,offset,genSearchTpl,height } = this.props;
+        const { sticky,exportTypes,onExport,onSearch,url,limit,offset,genSearchTpl,height,apiService } = this.props;
         const { dataSource,columns,showNo } = this.state;
         let pages = Math.ceil(dataSource.length/limit);
         return (
@@ -186,7 +201,7 @@ class Tutable extends Component {
                 <div className="tu-table-toolbar">
                     <div className="tu-table-toolbar-left">
                         <div className="tu-table-search">
-                            {genSearchTpl(url,limit,offset,onSearch)}
+                            {genSearchTpl({url,limit,offset,onSearch,apiService,successCallback:this.successCallback,errorCallback:this.errorCallback})}
                             {/*<input type="text" className="form-control" placeholder="请输入查询关键词" onChange={(e) => {onSearch(e,url,limit,offset)}}/>*/}
                         </div>
                     </div>

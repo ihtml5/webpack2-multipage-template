@@ -10,6 +10,8 @@ import logo from './logo.svg';
 import { tableCfg } from './config';
 import Tumenu from './components/menu';
 import {console} from './utils';
+import apiService from './services';
+
 console.log = () => {};
 // const { onSearch,onCheckAll,onCheck,onExport,limit,offset,url,exportTypes,onPageChange } = tableCfg;
 class App extends Component {
@@ -30,7 +32,7 @@ class App extends Component {
                 <Tumenu/>
               </div>
               <div className="App-content">
-                <Tutable multi sticky filter {...tableCfg}>
+                <Tutable multi sticky filter {...tableCfg} apiService={apiService}>
                   <Tuthead/>
                   <Tutbody/>
                 </Tutable>

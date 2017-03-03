@@ -48,3 +48,9 @@
 .tupack-des a {
   color: #fff;
 }
+
+.tupack-des a:hover,.tupack-des a:active {
+  width: 300px;
+  color: #ddd;
+  transition: all ease-in 0.3s;
+}

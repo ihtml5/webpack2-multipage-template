@@ -4,6 +4,7 @@
 // firstScript.parentNode.insertBefore(createEl('div','list'),firstScript);
 var root = document.getElementById('tmvvm');
 import TObserver,{ DynamicArray} from './modules/tmvvm.js';
+import TuService from './services';
 const data = {
     user: {
         name: 'tmvvm',
@@ -15,11 +16,15 @@ const data = {
 };
 
 let app = new TObserver(data);
-console.log('app',app);
-app.$watch('user',function(user) {
-    console.log('改变',user);
-});
-app.set('user','chenyf');
+let services = new TuService('http://ac-OnsG2j7w.clouddn.com/61489181fc856ffd.json');
+
+// console.log('app',app);
+// app.$watch('user',function(user) {
+//     console.log('改变',user['user']);
+// });
+// app.set('user','chenyf');
+
+services.get();
 
 
 

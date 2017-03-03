@@ -38,11 +38,18 @@ const onExport = (formate,data,ev) => {
   ev.target.download = 'data.' + formate;
   console.log(contents);
 }
-const onSearch = (e,url,limit,offset) => {
+const onSearch = ({e,url,limit,offset,apiService,successCallback,errorCallback}) => {
   if (e.target.value.length === 0 ) {
     return;
   }
-  console.log('onSearch',`${url}/search.shtml?keyword=${e.target.value}&limit=${limit}&offset=${offset}`);
+  url = `${url}/search.shtml?keyword=${e.target.value}&limit=${limit}&offset=${offset}`;
+  let config = null;
+  apiService.get({url,config},(result) => {
+    successCallback && successCallback(result);
+  },(error) => {
+    errorCallback && errorCallback(error);
+  });
+  console.log('onSearch',url);
 }
 const onPageChange = (e) => {
   alert(e.target.textContent);
@@ -91,10 +98,10 @@ let onPaginationChangeTip = (e,offset,pages) => {
 const limit = 1;
 const offset = 0;
 const height = 300;
-let genSearchTpl = (url,limit,offset,onSearch) => {
+let genSearchTpl = ({url,limit,offset,onSearch,apiService,successCallback,errorCallback}) => {
   return (
     <div>
-      <input type="text" className="form-control tu-table-searchInput" placeholder="请输入查询关键词" onChange={(e) => {onSearch(e,url,limit,offset)}}/>
+      <input type="text" className="form-control tu-table-searchInput" placeholder="请输入查询关键词" onChange={(e) => {onSearch({e,url,limit,offset,apiService,successCallback,errorCallback})}}/>
       <Button type="primary" style={{marginLeft: '10px'}}>查询</Button>
     </div>
   )

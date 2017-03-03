@@ -32,14 +32,19 @@ class Tumenu extends Component {
                     <Menu.Item key="3">Jquery</Menu.Item>
                 </SubMenu>
                 <SubMenu key="sub2" title={<span><Icon type="appstore" /><span>工程化</span></span>}>
-                <Menu.Item key="5">Webpack</Menu.Item>
-                <Menu.Item key="6">Gulp</Menu.Item>
+                    <Menu.Item key="5">Webpack</Menu.Item>
+                    <Menu.Item key="6">Gulp</Menu.Item>
                 </SubMenu>
-                <SubMenu key="sub4" title={<span><Icon type="setting" /><span>Navigation Three</span></span>}>
-                <Menu.Item key="9">Option 9</Menu.Item>
-                <Menu.Item key="10">Option 10</Menu.Item>
-                <Menu.Item key="11">Option 11</Menu.Item>
-                <Menu.Item key="12">Option 12</Menu.Item>
+                <SubMenu key="sub4" title={<span><Icon type="setting" /><span>代码规范</span></span>}>
+                    <Menu.Item key="9">Html</Menu.Item>
+                    <Menu.Item key="10">Css</Menu.Item>
+                    <Menu.Item key="11">Javascript</Menu.Item>
+                    <Menu.Item key="12">Es6</Menu.Item>
+                </SubMenu>
+                <SubMenu key="sub5" title={<span><Icon type="setting" /><span>前后端分离</span></span>}>
+                    <Menu.Item key="9">Mock</Menu.Item>
+                    <Menu.Item key="10">联调</Menu.Item>
+                    <Menu.Item key="11">Common module</Menu.Item>
                 </SubMenu>
             </Menu>
         );
