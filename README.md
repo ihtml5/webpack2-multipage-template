@@ -13,4 +13,4 @@
 2. [webpack](http://webpack.js.org)
 3. [react](http://github.com/facebook/react);
 3. [redux](http://redux.js.org)
-4. [react-router](https://github.com/ReactTraining/react-router)\
+4. [react-router](https://github.com/ReactTraining/react-router)
